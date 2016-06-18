@@ -13,8 +13,8 @@
 html {
   @include define-type-sizing;
   box-sizing: border-box;
-  font-family: 'Roboto Mono', $monospace-stack;
-  font-weight: 300;
+  font-family: 'Heebo', $sans-serif-stack;
+  font-weight: 400;
   color: $color-black;
 }
 
@@ -26,39 +26,48 @@ h1 { @include font-size(xl) }
 h2, h3 { @include font-size(l) }
 
 h1, h2, h3 {
-  font-weight: 500;
+  font-weight: 700;
 
   + p {
     margin-top: 0;
   }
 }
 
-#Main h1:first-of-type {
+body {
   @include padding(0 0.5);
-  margin-top: 0;
 
-  @media screen and (max-width: 479px) {
-    @include font-size(l);
+  @media screen and (min-width: 479px) {
+    @include padding(0 1);
   }
+}
 
-  @media screen and (min-width: 800px) {
-    padding: 0;
+#Main {
+  @include margin-top(2);
+
+  h1:first-of-type,
+  h2:first-of-type {
+    margin: 0;
+
+    @media screen and (max-width: 479px) {
+      @include font-size(l);
+    }
   }
 }
 
 a {
   text-decoration: none;
   outline: none;
-  color: $color-peach;
+  color: $color-teal;
 
   &:hover,
   &:focus {
+    color: $color-peach;
     text-decoration: underline;
   }
 }
 
 strong {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 img {
@@ -72,18 +81,16 @@ a[role="button"],
   @include padding(0.25);
   display: block;
   cursor: pointer;
-  border: 1px solid $color-peach;
-  vertical-align: middle;
+  border: 0;
   text-decoration: none;
-  color: $color-peach;
-  background-color: transparent;
+  background-color: $color-teal;
+  color: $color-white;
   transition: background-color ease-out 0.15s,
               color ease-out 0.15s;
 
   &:hover,
   &:focus {
     background-color: $color-peach;
-    color: $color-white;
   }
 
   &[disabled] {
@@ -91,7 +98,22 @@ a[role="button"],
     cursor: default;
   }
 
-  @media screen and (min-width: 640px) {
+  &.Button--bare {
+    background-color: transparent;
+    color: $color-teal;
+  }
+
+  &.Button--block {
+    width: 100%;
+  }
+
+  &.Button--inline {
     display: inline-block;
+  }
+
+  svg {
+    @include scut-size(16px);
+    display: inline-block;
+    vertical-align: middle;
   }
 }

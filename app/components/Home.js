@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router';
+import PlayersContainer from '../containers/PlayersContainer';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div></div>
+      <PlayersContainer />
     );
   }
 }

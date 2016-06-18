@@ -4,37 +4,51 @@ form {
   > div {
     @include margin(1 0);
   }
+}
 
-  label {
-    display: block;
+label {
+  display: block;
 
-    .Required-marker {
-      padding-left: 3px;
-      vertical-align: super;
-      color: $color-red;
-    }
+  .Required-marker {
+    padding-left: 3px;
+    vertical-align: super;
+    color: $color-red;
+  }
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  @include margin(0.25 0);
+  @include padding(0.25);
+  border: 2px solid $color-gray;
+  outline: 0;
+  width: 100%;
+
+  &:focus,
+  &:active {
+    border-color: darken($color-gray, 8%);
+  }
+}
+
+textarea {
+  min-height: 200px;
+}
+
+input[type="submit"] {
+  display: block;
+}
+
+.InputGroup {
+  display: flex;
+
+  input[type="text"] {
+    flex: 1;
+    margin: 0;
+    border-right-width: 0;
   }
 
-  input[type="text"],
-  input[type="number"],
-  textarea {
-    @include margin(0.25 0);
-    @include padding(0.25);
-    border: 2px solid $color-gray;
-    outline: 0;
-    width: 100%;
-
-    &:focus,
-    &:active {
-      border-color: darken($color-gray, 8%);
-    }
-  }
-
-  textarea {
-    min-height: 200px;
-  }
-
-  input[type="submit"] {
-    display: block;
+  button {
+    @include padding(0.25 0.5);
   }
 }

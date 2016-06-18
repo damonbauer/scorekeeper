@@ -1,10 +1,11 @@
 @import '../scss/import';
 
-#Main {
-  @include scut-center-block(1200px);
-  @include margin-top(1);
+.Players-list {
+  @include scut-list-unstyled;
+  @include margin-bottom(1);
+  display: flex;
 
-  @media screen and (min-width: 1200px) {
-    @include margin-top(2);
+  .Player {
+    @include margin-right(1);
   }
 }
