@@ -1,0 +1,54 @@
+{
+  "name": "scorekeeper",
+  "version": "0.1.0",
+  "description": "Keep score of your card/board/dice games.",
+  "main": "index.js",
+  "precommit": "js:lint",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "prod": "rm -rf ./dist && mkdir -p ./dist && mkdir ./dist/app && cp -r ./app/{css,images} ./dist/app && webpack --config ./webpack.config.prod.js -p",
+    "scss:global": "node-sass --output-style compressed -o app/css app/scss/global.scss && postcss -u autoprefixer -r app/css/global.css",
+    "js:lint": "eslint ./app",
+    "watch:scss": "onchange 'app/scss/*.scss' -- npm run scss:global"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damonbauer/scorekeeper.git"
+  },
+  "keywords": ["score", "card", "card game", "game", "board", "dice", "board game"],
+  "author": "Damon Bauer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damonbauer/scorekeeper/issues"
+  },
+  "homepage": "https://github.com/damonbauer/scorekeeper#readme",
+  "dependencies": {
+    "babel-plugin-transform-function-bind": "^6.8.0",
+    "normalize.css": "^4.1.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
+    "scut": "^1.4.0",
+    "typey": "^1.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.13.0",
+    "eslint-plugin-react": "^5.2.2",
+    "html-webpack-plugin": "^2.21.0",
+    "node-sass": "^3.8.0",
+    "npm-run-all": "^2.1.2",
+    "onchange": "^2.5.0",
+    "postcss-cli": "^2.5.2",
+    "pre-commit": "^1.1.3",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.1.0-beta.13",
+    "webpack-dev-server": "^2.1.0-beta.0"
+  }
+}

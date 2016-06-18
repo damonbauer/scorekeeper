@@ -1,0 +1,97 @@
+// THIS FILE SHOULD NOT BE USED IN ANY COMPONENTS.
+// IT IS MEANT TO BE STANDALONE.
+// Compile with `npm run scss:global`.
+// The resulting CSS file is already included in
+// a <link /> in app/index.html
+
+@import "variables";
+@import "../../node_modules/scut/dist/scut";
+@import "../../node_modules/typey/stylesheets/typey";
+@import "../../node_modules/normalize.css/normalize";
+@import "forms";
+
+html {
+  @include define-type-sizing;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', $monospace-stack;
+  font-weight: 300;
+  color: $color-black;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1 { @include font-size(xl) }
+h2, h3 { @include font-size(l) }
+
+h1, h2, h3 {
+  font-weight: 500;
+
+  + p {
+    margin-top: 0;
+  }
+}
+
+#Main h1:first-of-type {
+  @include padding(0 0.5);
+  margin-top: 0;
+
+  @media screen and (max-width: 479px) {
+    @include font-size(l);
+  }
+
+  @media screen and (min-width: 800px) {
+    padding: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  color: $color-peach;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+strong {
+  font-weight: 500;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+a[role="button"],
+[type="submit"] {
+  @include font-size(s);
+  @include padding(0.25);
+  display: block;
+  cursor: pointer;
+  border: 1px solid $color-peach;
+  vertical-align: middle;
+  text-decoration: none;
+  color: $color-peach;
+  background-color: transparent;
+  transition: background-color ease-out 0.15s,
+              color ease-out 0.15s;
+
+  &:hover,
+  &:focus {
+    background-color: $color-peach;
+    color: $color-white;
+  }
+
+  &[disabled] {
+    opacity: 0.25;
+    cursor: default;
+  }
+
+  @media screen and (min-width: 640px) {
+    display: inline-block;
+  }
+}
