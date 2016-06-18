@@ -17,8 +17,7 @@ form {
 
   input[type="text"],
   input[type="number"],
-  textarea,
-  .FileUpload {
+  textarea {
     @include margin(0.25 0);
     @include padding(0.25);
     border: 2px solid $color-gray;
@@ -37,50 +36,5 @@ form {
 
   input[type="submit"] {
     display: block;
-  }
-
-  .FileUpload > div {
-    @include padding(1);
-  }
-}
-
-div {
-  .Select {
-    &.is-focused:not(.is-open) > .Select-control,
-    &.is-focused.is-open > .Select-control {
-      box-shadow: none;
-      border-color: darken($color-gray, 8%);
-    }
-  }
-
-  .Select-control {
-    @include margin(0.25 0);
-    border-radius: 0;
-    border: 2px solid $color-gray;
-    outline: 0;
-    width: 100%;
-
-    &:focus,
-    &:active {
-      border-color: darken($color-gray, 8%);
-    }
-  }
-
-  .Select--multi .Select-value {
-    background-color: white;
-    border-color: $color-peach;
-    border-radius: 0;
-    color: $color-peach;
-
-    &-icon {
-      border-right: 0;
-      border-radius: 0;
-
-      &:hover,
-      &:focus {
-        color: $color-peach;
-        background-color: transparent;
-      }
-    }
   }
 }

@@ -10,6 +10,9 @@ module.exports = {
     'es6': true,
     'browser': true
   },
+  "globals": {
+    "require": true
+  },
   'extends': ['eslint:recommended', 'plugin:react/recommended'],
   'parserOptions': {
     'sourceType': 'module',

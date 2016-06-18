@@ -1,0 +1,75 @@
+@import '../../scss/import';
+
+#Masthead {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+.Logo {
+  @include padding(0.5 0 0.5 0.5);
+  @include font-size(m);
+  font-weight: bold;
+  color: $color-teal;
+}
+
+.Navigation {
+  &-container {
+    flex: 1 0 auto;
+    display: flex;
+
+    @media screen and (max-width: 800px) {
+      @include scut-fixed(0 0 0 0);
+      display: none;
+    }
+  }
+
+  ul {
+    @include scut-list-unstyled;
+    display: flex;
+  }
+
+  li {
+    @include margin(0 1);
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    @include padding(1);
+    color: $color-white;
+
+    img {
+      @include scut-size(24px);
+      margin-right: 10px;
+      vertical-align: bottom;
+    }
+  }
+}
+
+#Menu {
+  all: unset;
+  @include font-size(s);
+  margin-left: auto;
+  padding: 5px;
+  cursor: pointer;
+  background-color: $color-teal;
+  color: $color-white;
+  border-radius: 4px;
+
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
+}

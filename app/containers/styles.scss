@@ -1,0 +1,10 @@
+@import '../scss/import';
+
+#Main {
+  @include scut-center-block(1200px);
+  @include margin-top(1);
+
+  @media screen and (min-width: 1200px) {
+    @include margin-top(2);
+  }
+}
