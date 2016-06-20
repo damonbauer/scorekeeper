@@ -29,6 +29,12 @@ textarea {
   &:active {
     border-color: darken($color-gray, 8%);
   }
+
+  &.is-completed {
+    border-color: transparent;
+    border-bottom: 1px dotted $color-gray;
+    background-color: transparent;
+  }
 }
 
 textarea {

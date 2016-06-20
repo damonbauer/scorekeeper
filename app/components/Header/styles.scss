@@ -17,6 +17,6 @@
   margin-left: auto;
 
   svg {
-    @include margin(0 0.25);
+    @include margin-right(0.25);
   }
 }

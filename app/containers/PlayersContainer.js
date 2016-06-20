@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import InlineSVG from 'svg-inline-react';
 
 require('./styles.scss');
@@ -18,6 +19,10 @@ export default class PlayersContainer extends React.Component {
     let inputValue = this.refs.playerInput.value;
     let newArray = this.state.players.slice();
 
+    if (!inputValue) {
+      return false;
+    }
+
     newArray.push({
       name: inputValue
     });
@@ -35,6 +40,14 @@ export default class PlayersContainer extends React.Component {
     this.setState({
       players: newPlayers
     });
+  }
+
+  componentDidMount() {
+    window.localStorage.removeItem('state');
+  }
+
+  componentDidUpdate() {
+    window.localStorage.setItem('state', JSON.stringify(this.state));
   }
 
   render() {
@@ -72,7 +85,7 @@ export default class PlayersContainer extends React.Component {
           {playersList}
         </ul>
 
-        <button className="Button--block" disabled={!this.state.players.length}>Start Game</button>
+        <Link to='/game' role="button" className="Button--block" disabled={!this.state.players.length}>Start Game</Link>
       </div>
     );
   }
