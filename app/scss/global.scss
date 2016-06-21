@@ -9,7 +9,6 @@
 @import "../../node_modules/typey/stylesheets/typey";
 @import "../../node_modules/normalize.css/normalize";
 @import "forms";
-@import "tables";
 
 html {
   @include define-type-sizing;

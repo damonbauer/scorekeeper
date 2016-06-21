@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import InlineSVG from 'svg-inline-react';
-import Thead from '../components/Game/TableHead';
-import Tr from '../components/Game/TableRow';
+import Header from '../components/Game/Header';
+import Round from '../components/Game/Round';
 
 require('./styles.scss');
 
@@ -21,18 +20,14 @@ export default class GameContainer extends React.Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this.refs.row_1.refs.input_1_0).focus();
+    ReactDOM.findDOMNode(this.refs.row_1).querySelector('input').focus();
   }
 
   componentDidUpdate() {
     window.localStorage.setItem('state', JSON.stringify(this.state));
   }
 
-  handleInputFocus() {}
-
-  handleInputBlur() {}
-
-  handleAddRow() {
+  onFormSubmit() {
     let prevRow = this.state.rows.slice(-1)[0].num;
     let newArray = this.state.rows.slice();
 
@@ -45,28 +40,19 @@ export default class GameContainer extends React.Component {
 
   render() {
     let rows = this.state.rows.map(row =>
-      <Tr
+      <Round
         key={`row_${row.num}`}
         ref={`row_${row.num}`}
         roundNum={`${row.num}`}
         players={this.state.players}
-        handleInputFocus={::this.handleInputFocus}
-        handleInputBlur={::this.handleInputBlur}
+        handleFormSubmit={::this.onFormSubmit}
       />
     );
 
     return (
       <div id="Game">
-        <h1>Game</h1>
-        <table>
-          <Thead data={this.state.players} />
-          <tbody ref="tableBody">
-            {rows}
-          </tbody>
-        </table>
-        <button type="button" id="add-row" onClick={::this.handleAddRow}>
-          <InlineSVG src={require('svg-inline!../images/plus.svg')} raw={true} /> Add Round
-        </button>
+        <Header data={this.state.players} />
+        {rows}
       </div>
     );
   }

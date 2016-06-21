@@ -1,25 +1,4 @@
-form {
-  @include margin(1 0);
-
-  > div {
-    @include margin(1 0);
-  }
-}
-
-label {
-  display: block;
-
-  .Required-marker {
-    padding-left: 3px;
-    vertical-align: super;
-    color: $color-red;
-  }
-}
-
-input[type="text"],
-input[type="number"],
-textarea {
-  @include margin(0.25 0);
+input[type="text"] {
   @include padding(0.25);
   border: 2px solid $color-gray;
   outline: 0;
@@ -35,10 +14,6 @@ textarea {
     border-bottom: 1px dotted $color-gray;
     background-color: transparent;
   }
-}
-
-textarea {
-  min-height: 200px;
 }
 
 input[type="submit"] {

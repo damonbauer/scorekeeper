@@ -9,3 +9,55 @@
     @include margin-right(1);
   }
 }
+
+// .Game-header,
+// .Round {
+//   display: flex;
+//   justify-content: space-between;
+
+//   > p:first-of-type {
+//     flex: 0 0 30px;
+//   }
+// }
+
+// .Round-inputGroup {
+//   flex: 100%;
+//   display: flex;
+// }
+
+
+#Game {
+  display: table;
+  width: 100%;
+  border: 1px solid #cbcbcb;
+  table-layout: fixed;
+}
+
+.Game-header,
+.Game-round {
+  display: table-row;
+}
+
+.Game-cell {
+  display: table-cell;
+  border-left: 1px solid #cbcbcb;
+  border-width: 0 0 0 1px;
+  margin: 0;
+  overflow: visible;
+  padding: 0.5em 1em;
+
+  &:first-child {
+    border-left-width: 0;
+    width: 50px;
+    text-align: center;
+  }
+
+  .Game-header & {
+    background-color: #e0e0e0;
+    color: #000;
+  }
+}
+
+.Game-round:nth-child(odd) .Game-cell {
+  background-color: #f2f2f2;
+}
