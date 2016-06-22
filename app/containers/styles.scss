@@ -10,23 +10,8 @@
   }
 }
 
-// .Game-header,
-// .Round {
-//   display: flex;
-//   justify-content: space-between;
-
-//   > p:first-of-type {
-//     flex: 0 0 30px;
-//   }
-// }
-
-// .Round-inputGroup {
-//   flex: 100%;
-//   display: flex;
-// }
-
-
 #Game {
+  position: relative;
   display: table;
   width: 100%;
   border: 1px solid #cbcbcb;
@@ -42,9 +27,9 @@
   display: table-cell;
   border-left: 1px solid #cbcbcb;
   border-width: 0 0 0 1px;
-  margin: 0;
-  overflow: visible;
   padding: 0.5em 1em;
+  margin: 0;
+  width: 100%;
 
   &:first-child {
     border-left-width: 0;
@@ -60,4 +45,12 @@
 
 .Game-round:nth-child(odd) .Game-cell {
   background-color: #f2f2f2;
+}
+
+.Total-score {
+  font-weight: bold;
+}
+
+#add-row {
+  @include scut-absolute(n n -4em 0);
 }

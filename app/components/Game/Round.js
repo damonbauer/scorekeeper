@@ -6,18 +6,18 @@ export default class Round extends React.Component {
     super(props);
 
     this.state = {
-      scores: []
     };
   }
 
   onFormSubmit(e) {
     e.preventDefault();
 
-    this.setState({
-      scores: []
-    });
+    let formEls = Array.from(e.target.getElementsByTagName('input'));
+    let scores = formEls.map(input => parseInt(input.value, 10));
 
-    this.props.handleFormSubmit();
+    formEls.forEach(input => input.setAttribute('disabled', 'disabled'));
+
+    this.props.handleFormSubmit(scores);
   }
 
   render() {

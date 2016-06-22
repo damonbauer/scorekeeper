@@ -27,14 +27,17 @@ export default class GameContainer extends React.Component {
     window.localStorage.setItem('state', JSON.stringify(this.state));
   }
 
-  onFormSubmit() {
+  onFormSubmit(scores) {
     let prevRow = this.state.rows.slice(-1)[0].num;
-    let newArray = this.state.rows.slice();
+    let newRowsArray = this.state.rows.slice();
+    let currentScores = this.state.scores.slice();
 
-    newArray.push({'num': prevRow + 1});
+    newRowsArray.push({'num': prevRow + 1});
+    currentScores.push(scores);
 
     this.setState({
-      rows: newArray
+      rows: newRowsArray,
+      scores: currentScores
     });
   }
 
@@ -45,13 +48,13 @@ export default class GameContainer extends React.Component {
         ref={`row_${row.num}`}
         roundNum={`${row.num}`}
         players={this.state.players}
-        handleFormSubmit={::this.onFormSubmit}
+        handleFormSubmit={scores => {::this.onFormSubmit(scores)}}
       />
     );
 
     return (
       <div id="Game">
-        <Header data={this.state.players} />
+        <Header players={this.state.players} scores={this.state.scores} />
         {rows}
       </div>
     );

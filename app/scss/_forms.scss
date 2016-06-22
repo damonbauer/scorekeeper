@@ -9,7 +9,7 @@ input[type="text"] {
     border-color: darken($color-gray, 8%);
   }
 
-  &.is-completed {
+  &[disabled='disabled'] {
     border-color: transparent;
     border-bottom: 1px dotted $color-gray;
     background-color: transparent;
