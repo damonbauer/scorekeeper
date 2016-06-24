@@ -7,8 +7,8 @@ require('./styles.scss');
 export default function Header() {
   return (
     <header id='Masthead' role='banner'>
-      <Link to='/' className='Logo'>Scorekeeper</Link>
-      <Link to='/' role="button" id='restart'><InlineSVG src={require('svg-inline!../../images/refresh.svg')} raw={true} /> Restart</Link>
+      <Link to='/scorekeeper' className='Logo'>Scorekeeper</Link>
+      <Link to='/scorekeeper' role="button" id='restart'><InlineSVG src={require('svg-inline!../../images/refresh.svg')} raw={true} /> Restart</Link>
     </header>
   );
 }

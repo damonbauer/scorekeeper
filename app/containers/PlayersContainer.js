@@ -85,7 +85,7 @@ export default class PlayersContainer extends React.Component {
           {playersList}
         </ul>
 
-        <Link to='/game' role="button" className="Button--block" disabled={!this.state.players.length}>Start Game</Link>
+        <Link to='/scorekeeper/game' role="button" className="Button--block" disabled={!this.state.players.length}>Start Game</Link>
       </div>
     );
   }

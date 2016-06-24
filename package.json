@@ -7,11 +7,11 @@
   "scripts": {
     "postinstall": "npm run move:normalize",
     "start": "webpack-dev-server",
-    "prod": "rm -rf ./dist && mkdir -p ./dist && mkdir ./dist/app && cp -r ./app/css ./dist/app && webpack -p",
+    "prod": "rm -rf ./dist && mkdir ./dist && cp ./global.css ./dist && webpack --config ./webpack.config.prod.js -p",
     "gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup",
     "deploy": "npm run js:lint && npm run scss:global && npm run prod && npm run gh-pages",
     "move:normalize": "cp ./node_modules/normalize.css/normalize.css ./node_modules/normalize.css/_normalize.scss && rm ./node_modules/normalize.css/normalize.css",
-    "scss:global": "node-sass --output-style compressed -o app/css app/scss/global.scss && postcss -u autoprefixer -r app/css/global.css",
+    "scss:global": "node-sass --output-style compressed -o ./ ./app/scss/global.scss && postcss -u autoprefixer -r ./global.css",
     "js:lint": "eslint ./app",
     "watch:scss": "onchange 'app/scss/*.scss' -- npm run scss:global"
   },
