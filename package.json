@@ -7,7 +7,9 @@
   "scripts": {
     "postinstall": "npm run move:normalize",
     "start": "webpack-dev-server",
-    "prod": "rm -rf ./dist && mkdir -p ./dist && mkdir ./dist/app && cp -r ./app/{css,images} ./dist/app && webpack --config ./webpack.config.prod.js -p",
+    "prod": "rm -rf ./dist && mkdir -p ./dist && mkdir ./dist/app && cp -r ./app/css ./dist/app && webpack -p",
+    "gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "deploy": "npm run js:lint && npm run scss:global && npm run prod && npm run gh-pages",
     "move:normalize": "cp ./node_modules/normalize.css/normalize.css ./node_modules/normalize.css/_normalize.scss && rm ./node_modules/normalize.css/normalize.css",
     "scss:global": "node-sass --output-style compressed -o app/css app/scss/global.scss && postcss -u autoprefixer -r app/css/global.css",
     "js:lint": "eslint ./app",
@@ -59,9 +61,10 @@
     "onchange": "^2.5.0",
     "postcss-cli": "^2.5.2",
     "pre-commit": "^1.1.3",
+    "push-dir": "^0.2.1",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.13",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }
