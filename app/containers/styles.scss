@@ -35,16 +35,13 @@
   }
 
   .Game-cell {
-    border-top-width: 1px;
+    border-width: 1px 1px 0 0;
     background-color: #e0e0e0;
     color: #000;
 
     &:first-child {
       border-left-width: 1px;
-    }
-
-    &:last-child {
-      border-right-width: 1px;
+      flex: 0 0 52px;
     }
   }
 }
@@ -54,7 +51,6 @@
 }
 
 .Game-cell {
-  // display: table-cell;
   border: 1px solid #cbcbcb;
   border-width: 0 0 0 1px;
   padding: 0.5em 1em;
@@ -62,8 +58,8 @@
   width: 100%;
 
   &:first-child {
+    flex: 0 0 50px;
     border-left-width: 0;
-    width: 50px;
     text-align: center;
   }
 }

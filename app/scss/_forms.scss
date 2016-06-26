@@ -1,8 +1,15 @@
-input[type="text"] {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="text"],
+input[type="number"] {
   @include padding(0.25);
   border: 2px solid $color-gray;
   outline: 0;
   width: 100%;
+  -moz-appearance: textfield;
 
   &:focus,
   &:active {
