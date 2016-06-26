@@ -1,9 +1,17 @@
 @import '../../scss/import';
 
 #Masthead {
+  @include scut-fixed(0 0 n 0);
+  @include padding(0 0.5);
   @include font-size(s);
+  width: 100%;
   display: flex;
   align-items: flex-start;
+  z-index: 1;
+
+  @media screen and (min-width: 479px) {
+    @include padding(0 1);
+  }
 }
 
 .Logo {

@@ -14,9 +14,11 @@ export default function Header(props) {
   };
 
   return (
-    <div className="Game-header">
-      <p className="Game-cell">#</p>
-      {props.players.map((player, index) => <p key={player.name} className="Game-cell">{player.name} <span className="Total-score">{gatherScores(index)}</span></p>)}
+    <div className="Game-header-wrap">
+      <div className="Game-header">
+        <p className="Game-cell">#</p>
+        {props.players.map((player, index) => <p key={player.name} className="Game-cell">{player.name} <span className="Total-score">{gatherScores(index)}</span></p>)}
+      </div>
     </div>
   );
 }

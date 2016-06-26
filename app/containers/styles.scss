@@ -18,14 +18,44 @@
   table-layout: fixed;
 }
 
-.Game-header,
+.Game-header-wrap {
+  @include scut-fixed(0 0 n 0);
+  @include scut-size(100% 96px);
+  overflow: hidden;
+  background-color: white;
+}
+
+.Game-header {
+  @include scut-absolute(n 0 0 0);
+  @include padding(0 0.5);
+  display: flex;
+
+  @media screen and (min-width: 479px) {
+    @include padding(0 1);
+  }
+
+  .Game-cell {
+    border-top-width: 1px;
+    background-color: #e0e0e0;
+    color: #000;
+
+    &:first-child {
+      border-left-width: 1px;
+    }
+
+    &:last-child {
+      border-right-width: 1px;
+    }
+  }
+}
+
 .Game-round {
-  display: table-row;
+  display: flex;
 }
 
 .Game-cell {
-  display: table-cell;
-  border-left: 1px solid #cbcbcb;
+  // display: table-cell;
+  border: 1px solid #cbcbcb;
   border-width: 0 0 0 1px;
   padding: 0.5em 1em;
   margin: 0;
@@ -35,11 +65,6 @@
     border-left-width: 0;
     width: 50px;
     text-align: center;
-  }
-
-  .Game-header & {
-    background-color: #e0e0e0;
-    color: #000;
   }
 }
 

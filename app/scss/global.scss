@@ -42,7 +42,7 @@ body {
 }
 
 #Main {
-  @include margin-top(2);
+  @include margin-top(4);
 
   h1:first-of-type,
   h2:first-of-type {
