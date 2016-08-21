@@ -8,7 +8,7 @@ export default (
   <Router history={browserHistory}>
     <Route path='/scorekeeper' component={Main}>
       <IndexRoute component={PlayersContainer} />
-      <Route path='game' component={GameContainer} />
+      <Route path='/scorekeeper/game/:gameId' component={GameContainer} />
     </Route>
   </Router>
 );

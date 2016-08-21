@@ -1,4 +1,6 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPluginConfig = new ExtractTextPlugin("[name].css");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/index.html',
@@ -12,7 +14,9 @@ module.exports = {
   ],
   output: {
     path: __dirname + '/dist',
-    filename: 'index_bundle.js'
+    publicPath: '/scorekeeper/',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[chunkhash].js'
   },
   module: {
     loaders: [
@@ -27,11 +31,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
-      },
-      {
-        test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: ExtractTextPlugin.extract('style', 'css')
       }
     ],
   },
@@ -40,6 +40,7 @@ module.exports = {
   },
   plugins: [
     HtmlWebpackPluginConfig,
+    ExtractTextPluginConfig,
     new webpack.DefinePlugin({
       'process.env':{
         'NODE_ENV': JSON.stringify('production')

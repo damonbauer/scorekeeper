@@ -1,20 +1,31 @@
-// THIS FILE SHOULD NOT BE USED IN ANY COMPONENTS.
-// IT IS MEANT TO BE STANDALONE.
-// Compile with `npm run scss:global`.
-// The resulting CSS file is already included in
-// a <link /> in app/index.html
+@import './node_modules/scut/dist/scut';
+@import './node_modules/typey/stylesheets/typey';
 
-@import "variables";
-@import "../../node_modules/scut/dist/scut";
-@import "../../node_modules/typey/stylesheets/typey";
-@import "../../node_modules/normalize.css/normalize";
-@import "forms";
+// Colors
+$color-white: #F7F7F7;
+$color-black: #1D1311;
+$color-gray: #B6C2CC;
+$color-teal: #73C7AF;
+$color-peach: #FF7867;
+$color-red: #D12E31;
+
+// Typey Config
+$line-height-method: ratio;
+$base-unit: rem;
+$base-line-height-ratio: 1.5;
+$base-font-size: 16px;
+$font-size: (
+  xl: 40px,
+  l:  32px,
+  m:  24px,
+  s:  16px,
+  xs: 12px
+);
 
 html {
   @include define-type-sizing;
   box-sizing: border-box;
-  font-family: 'Heebo', $sans-serif-stack;
-  font-weight: 400;
+  font-family: $sans-serif-stack;
   color: $color-black;
 }
 
@@ -26,8 +37,6 @@ h1 { @include font-size(xl) }
 h2, h3 { @include font-size(l) }
 
 h1, h2, h3 {
-  font-weight: 700;
-
   + p {
     margin-top: 0;
   }
@@ -42,7 +51,7 @@ body {
 }
 
 #Main {
-  @include margin-top(4);
+  margin-top: 8rem;
 
   h1:first-of-type,
   h2:first-of-type {
@@ -64,10 +73,6 @@ a {
     color: $color-peach;
     text-decoration: underline;
   }
-}
-
-strong {
-  font-weight: 700;
 }
 
 img {
@@ -123,4 +128,153 @@ a[role="button"],
     display: inline-block;
     vertical-align: middle;
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="text"],
+input[type="number"] {
+  @include padding(0.25);
+  border: 2px solid $color-gray;
+  outline: 0;
+  width: 100%;
+  -moz-appearance: textfield;
+
+  &:focus,
+  &:active {
+    border-color: darken($color-gray, 8%);
+  }
+
+  &[disabled='disabled'] {
+    border-color: transparent;
+    border-bottom: 1px dotted $color-gray;
+    background-color: transparent;
+  }
+}
+
+input[type="submit"] {
+  display: block;
+}
+
+.InputGroup {
+  display: flex;
+
+  input[type="text"] {
+    flex: 1;
+    margin: 0;
+    border-right-width: 0;
+  }
+
+  button {
+    @include padding(0.25 0.5);
+  }
+}
+
+#Masthead {
+  @include scut-fixed(0 0 n 0);
+  @include padding(0 0.5);
+  @include font-size(s);
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  z-index: 1;
+
+  @media screen and (min-width: 479px) {
+    @include padding(0 1);
+  }
+}
+
+.Logo {
+  @include padding(0.5 0);
+  font-weight: bold;
+  color: $color-teal;
+}
+
+#restart {
+  @include margin-top(0.25);
+  margin-left: auto;
+
+  svg {
+    @include margin-right(0.25);
+  }
+}
+
+.Players-list {
+  @include scut-list-unstyled;
+  @include margin-bottom(1);
+  display: flex;
+
+  .Player {
+    @include margin-right(1);
+  }
+}
+
+#Game {
+  position: relative;
+  display: table;
+  width: 100%;
+  border: 1px solid #cbcbcb;
+  table-layout: fixed;
+}
+
+.Game-header-wrap {
+  @include scut-fixed(0 0 n 0);
+  @include scut-size(100% 128px);
+  overflow: hidden;
+  background-color: white;
+}
+
+.Game-header {
+  @include scut-absolute(n 0 0 0);
+  @include padding(0 0.5);
+  display: flex;
+
+  @media screen and (min-width: 479px) {
+    @include padding(0 1);
+  }
+
+  .Game-cell {
+    border-width: 1px 1px 0 0;
+    background-color: #e0e0e0;
+    color: #000;
+
+    &:first-child {
+      border-left-width: 1px;
+      flex: 0 0 52px;
+    }
+  }
+}
+
+.Game-round {
+  display: flex;
+}
+
+.Game-cell {
+  border: 1px solid #cbcbcb;
+  border-width: 0 0 0 1px;
+  padding: 0.5em 1em;
+  margin: 0;
+  width: 100%;
+
+  &:first-child {
+    flex: 0 0 50px;
+    border-left-width: 0;
+    text-align: center;
+  }
+}
+
+.Game-round:nth-child(odd) .Game-cell {
+  background-color: #f2f2f2;
+}
+
+.Total-score {
+  display: block;
+  font-weight: bold;
+}
+
+#add-row {
+  @include scut-absolute(n n -4em 0);
 }

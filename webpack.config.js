@@ -1,3 +1,7 @@
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var DashboardPluginConfig = new DashboardPlugin();
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPluginConfig = new ExtractTextPlugin("[name].css");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/index.html',
@@ -10,6 +14,7 @@ module.exports = {
     './index.js'
   ],
   output: {
+    publicPath: '/',
     path: __dirname + '/dist',
     filename: 'index_bundle.js'
   },
@@ -26,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: ExtractTextPlugin.extract('style', 'css')
       },
       {
         test: /\.scss$/,
@@ -37,5 +42,9 @@ module.exports = {
   devServer: {
     historyApiFallback: true
   },
-  plugins: [HtmlWebpackPluginConfig]
+  plugins: [
+    HtmlWebpackPluginConfig,
+    ExtractTextPluginConfig,
+    DashboardPluginConfig
+  ]
 }

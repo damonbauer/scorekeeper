@@ -5,8 +5,7 @@ export default class Round extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    };
+    this.state = {};
   }
 
   inputHasValues(element) {
@@ -28,10 +27,10 @@ export default class Round extends React.Component {
   render() {
     return (
       <form onSubmit={::this.onFormSubmit} className="Game-round" key={`round_${this.props.roundNum}`}>
-        <p className="Game-cell">{this.props.roundNum}</p>
+        <p className="Game-cell">{this.props.displayedRoundNum}</p>
         {this.props.players.map((player, index) =>
           <div className="Game-cell" key={`cell_${this.props.roundNum}_${index}`}>
-            <input type="number" />
+            <input type="number" ref={`input_${this.props.roundNum}_${index}`} />
           </div>
         )}
         <button type="submit" id="add-row">
@@ -44,6 +43,7 @@ export default class Round extends React.Component {
 
 Round.propTypes = {
   roundNum: React.PropTypes.string.isRequired,
+  displayedRoundNum: React.PropTypes.string.isRequired,
   players: React.PropTypes.array.isRequired,
   handleFormSubmit: React.PropTypes.func.isRequired
 };

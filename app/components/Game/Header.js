@@ -9,15 +9,13 @@ let calcScore = (values) => {
 };
 
 export default function Header(props) {
-  let gatherScores = (index) => {
-    return calcScore(props.scores.map(scores => scores[index]));
-  };
+  let gatherScores = (index) => calcScore(props.scores.map(scores => scores[index]));
 
   return (
     <div className="Game-header-wrap">
       <div className="Game-header">
         <p className="Game-cell">#</p>
-        {props.players.map((player, index) => <p key={player.name} className="Game-cell">{player.name} <span className="Total-score">{gatherScores(index)}</span></p>)}
+        {props.players.map((player, index) => <p key={player} className="Game-cell">{player} <span className="Total-score">{gatherScores(index)}</span></p>)}
       </div>
     </div>
   );

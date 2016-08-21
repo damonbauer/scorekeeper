@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
 import InlineSVG from 'svg-inline-react';
-
-require('./styles.scss');
+import { Base, shortId } from '../config/api';
 
 export default class PlayersContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      players: []
+      players: [],
+      gameId: shortId()
     };
   }
 
@@ -43,11 +43,23 @@ export default class PlayersContainer extends React.Component {
   }
 
   componentDidMount() {
-    window.localStorage.removeItem('state');
+    Base.post(`game/${this.state.gameId}`, {
+      data: {
+        added: Base.database.ServerValue.TIMESTAMP
+      }
+    });
   }
 
   componentDidUpdate() {
-    window.localStorage.setItem('state', JSON.stringify(this.state));
+    const GAME_URL = `game/${this.state.gameId}`;
+
+    Base.post(`${GAME_URL}/players`, {
+      data: this.state.players
+    });
+
+    Base.post(`${GAME_URL}/rows`, {
+      data: [true]
+    });
   }
 
   render() {
@@ -85,7 +97,7 @@ export default class PlayersContainer extends React.Component {
           {playersList}
         </ul>
 
-        <Link to='/scorekeeper/game' role="button" className="Button--block" disabled={!this.state.players.length}>Start Game</Link>
+        <Link to={`/scorekeeper/game/${this.state.gameId}`} role="button" className="Button--block" disabled={!this.state.players.length}>Start Game</Link>
       </div>
     );
   }
