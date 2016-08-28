@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Base } from '../config/api';
 import foreach from 'lodash.foreach';
+import InlineSVG from 'svg-inline-react';
 import Header from '../components/Game/Header';
 import Round from '../components/Game/Round';
 
@@ -11,7 +12,7 @@ export default class GameContainer extends React.Component {
 
     this.state = {
       gameId: this.props.params.gameId,
-      rows: [true],
+      rows: [0],
       scores: [],
       players: []
     };
@@ -86,13 +87,29 @@ export default class GameContainer extends React.Component {
     });
   }
 
+  handleRestart() {
+    if (window.confirm('Are you sure you want to reset?')) {
+      this.setState({
+        rows: [0],
+        scores: []
+      });
+
+      Array.from(document.querySelectorAll('input')).forEach(input => {
+        input.value = '';
+        input.removeAttribute('disabled');
+      });
+
+      ReactDOM.findDOMNode(this.refs.row_0).querySelector('input').focus();
+    }
+  }
+
   render() {
     let rows = this.state.rows.map(num =>
       <Round
         key={`row_${num}`}
         ref={`row_${num}`}
-        roundNum={`${num}`}
-        displayedRoundNum={`${num + 1}`}
+        roundNum={num}
+        displayedRoundNum={num + 1}
         players={this.state.players}
         handleFormSubmit={scores => {::this.onFormSubmit(scores)}}
       />
@@ -100,6 +117,9 @@ export default class GameContainer extends React.Component {
 
     return (
       <div id="Game">
+        <button id='restart' onClick={::this.handleRestart}>
+          <InlineSVG src={require('svg-inline!../images/refresh.svg')} raw={true} /> Reset
+        </button>
         <Header players={this.state.players} scores={this.state.scores} />
         {rows}
       </div>

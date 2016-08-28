@@ -42,8 +42,8 @@ export default class Round extends React.Component {
 }
 
 Round.propTypes = {
-  roundNum: React.PropTypes.string.isRequired,
-  displayedRoundNum: React.PropTypes.string.isRequired,
+  roundNum: React.PropTypes.number.isRequired,
+  displayedRoundNum: React.PropTypes.number.isRequired,
   players: React.PropTypes.array.isRequired,
   handleFormSubmit: React.PropTypes.func.isRequired
 };

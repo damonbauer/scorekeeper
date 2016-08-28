@@ -9,7 +9,7 @@
     "start": "webpack-dashboard -- webpack-dev-server --config ./webpack.config.js",
     "prod": "rm -rf ./dist && mkdir ./dist && webpack --config ./webpack.config.prod.js -p",
     "surge": "surge -p dist --domain scorekeeper.surge.sh",
-    "deploy": "npm run js:lint && npm run scss:global && npm run prod && npm run surge",
+    "deploy": "npm run js:lint && npm run scss:global && npm run prod && cp ./dist/index.html ./dist/200.html && npm run surge",
     "move:normalize": "cp ./node_modules/normalize.css/normalize.css ./node_modules/normalize.css/_normalize.scss && rm ./node_modules/normalize.css/normalize.css",
     "scss:global": "node-sass --output-style compressed -o ./ ./app/scss/global.scss && postcss -u autoprefixer -r ./global.css",
     "js:lint": "eslint ./app",
