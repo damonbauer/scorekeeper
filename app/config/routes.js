@@ -6,9 +6,9 @@ import GameContainer from '../containers/GameContainer';
 
 export default (
   <Router history={browserHistory}>
-    <Route path='/scorekeeper' component={Main}>
+    <Route path='/' component={Main}>
       <IndexRoute component={PlayersContainer} />
-      <Route path='/scorekeeper/game/:gameId' component={GameContainer} />
+      <Route path='/game/:gameId' component={GameContainer} />
     </Route>
   </Router>
 );

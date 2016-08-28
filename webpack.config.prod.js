@@ -14,7 +14,7 @@ module.exports = {
   ],
   output: {
     path: __dirname + '/dist',
-    publicPath: '/scorekeeper/',
+    publicPath: '/',
     filename: '[name].[chunkhash].js',
     chunkFilename: '[chunkhash].js'
   },

@@ -10,7 +10,7 @@ export default class GameContainer extends React.Component {
     super(props);
 
     this.state = {
-      gameId: window.location.pathname.split('/').pop(),
+      gameId: this.props.params.gameId,
       rows: [true],
       scores: [],
       players: []
@@ -106,3 +106,7 @@ export default class GameContainer extends React.Component {
     );
   }
 }
+
+GameContainer.propTypes = {
+  params: React.PropTypes.object
+};
