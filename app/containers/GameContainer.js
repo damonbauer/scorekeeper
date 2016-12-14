@@ -73,13 +73,17 @@ export default class GameContainer extends React.Component {
     }
   }
 
-  onFormSubmit(scores) {
+  onFormSubmit(scores, roundNum, shouldReplaceRound = false) {
     let prevRow = this.state.rows.slice(-1)[0];
     let newRowsArray = this.state.rows.slice();
     let currentScores = this.state.scores.slice();
 
-    newRowsArray.push(prevRow + 1);
-    currentScores.push(scores);
+    if (!shouldReplaceRound) {
+      newRowsArray.push(prevRow + 1);
+      currentScores.push(scores);
+    } else {
+      currentScores.splice(roundNum, 1, scores);
+    }
 
     this.setState({
       rows: newRowsArray,
@@ -111,7 +115,7 @@ export default class GameContainer extends React.Component {
         roundNum={num}
         displayedRoundNum={num + 1}
         players={this.state.players}
-        handleFormSubmit={scores => {::this.onFormSubmit(scores)}}
+        handleFormSubmit={(scores, roundNum, shouldReplaceRound) => {::this.onFormSubmit(scores, roundNum, shouldReplaceRound)}}
       />
     );
 
