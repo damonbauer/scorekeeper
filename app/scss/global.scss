@@ -43,6 +43,10 @@ h1, h2, h3 {
   }
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   @include padding(0 0.5);
 
@@ -128,6 +132,7 @@ a[role="button"],
     @include scut-size(16px);
     display: inline-block;
     vertical-align: middle;
+    pointer-events: none;
   }
 }
 
@@ -244,13 +249,31 @@ input[type="submit"] {
 
     &:first-child {
       border-left-width: 1px;
-      flex: 0 0 52px;
+      flex: 0 0 62px;
     }
   }
 }
 
 .Game-round {
   display: flex;
+
+  .Game-cell {
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      display: flex;
+      flex-direction: column;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    input[type="number"] {
+      height: 3rem;
+    }
+  }
 }
 
 .Game-cell {

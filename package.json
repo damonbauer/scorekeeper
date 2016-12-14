@@ -6,7 +6,7 @@
   "precommit": "js:lint",
   "scripts": {
     "postinstall": "npm run move:normalize",
-    "start": "webpack-dashboard -- webpack-dev-server --config ./webpack.config.js",
+    "start": "webpack-dashboard -- webpack-dev-server --config ./webpack.config.js --port 9001",
     "prod": "rm -rf ./dist && mkdir ./dist && webpack --config ./webpack.config.prod.js -p",
     "surge": "surge -p dist --domain scorekeeper.surge.sh",
     "deploy": "npm run js:lint && npm run scss:global && npm run prod && cp ./dist/index.html ./dist/200.html && npm run surge",
